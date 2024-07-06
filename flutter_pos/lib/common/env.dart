@@ -7,3 +7,6 @@ const PROD_VERSION = "v1.0.2";
 
 const DEV_API_URL = "";
 const PROD_API_URL = "";
+
+const DEV_API_KEY = "";
+const PROD_API_KEY = "";

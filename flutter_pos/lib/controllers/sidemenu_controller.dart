@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_pos/pages/game/game_page.dart';
 
 import '../models/menu.dart';
-import '../screens/login/login_screen.dart';
+import '../pages/setting/setting_page.dart';
+import '../pages/ticket/ticket_page.dart';
 import 'auth_controller.dart';
 
 class SideMenuController extends ChangeNotifier {
@@ -19,9 +21,6 @@ class SideMenuController extends ChangeNotifier {
       }
     }
     currentSelectedIndex = index;
-    // menuModelList.forEach((element) {
-    //   print(element.title.toString() + " - " + element.isselected.toString());
-    // });
     notifyListeners();
   }
 
@@ -44,47 +43,31 @@ class SideMenuController extends ChangeNotifier {
     buildMenu();
   }
 
-  final _offline_screen = [const LoginScreen()];
-
   final _screens = [
+    const GamePage(),
+    const TicketPage(),
+    const SettingPage(),
   ];
 
-  final _offline_screens_title = ['Login'];
   final _screens_title = [
-    '클라이언트 목록',
-  ];
-
-  // final _screens_description = [
-  //   // '홈',
-  //   '클라이언트 목록',
-  //   '계정 목록',
-  //   '입금 요청 목록',
-  //   '토큰 전송 목록',
-  // ];
-
-  final List<Menu> _offline_menuModelList = [
-    Menu("login", "assets/icons/menu_login.svg")
+    'GAME',
+    'TICKET SCAN',
+    'SETTING',
   ];
 
   final List<Menu> _menuModelList = [
-    Menu("Clients", "assets/icons/menu_task.svg"),
+    Menu("Games", "assets/icons/menu_task.svg"),
+    Menu("Tickets", "assets/icons/menu_tran.svg"),
+    Menu("Settings", "assets/icons/menu_setting.svg"),
   ];
 
   List<Menu> menuModelList = [];
   var screens_title = [];
-  // var screens_description = [];
   var screens = [];
   void buildMenu() {
-    if (_authProvider != null && _authProvider!.currentuserModel == null) {
-      screens_title = _offline_screens_title;
-      menuModelList = _offline_menuModelList;
-      screens = _offline_screen;
-    } else {
-      screens_title = _screens_title;
-      // screens_description = _screens_description;
-      menuModelList = _menuModelList;
-      screens = _screens;
-    }
+    screens_title = _screens_title;
+    menuModelList = _menuModelList;
+    screens = _screens;
     notifyListeners();
   }
 }

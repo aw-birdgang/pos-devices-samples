@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../controllers/auth_controller.dart';
 import '../../controllers/sidemenu_controller.dart';
 import '../../shared/constants.dart';
-import '../../shared/responsive.dart';
+import 'components/header.dart';
 import 'components/side_menu.dart';
 
 class MainScreen extends StatelessWidget {
@@ -21,17 +21,15 @@ class MainScreen extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            if (Responsive.isDesktop(context))
-              const Expanded(
-                child: SideMenu(),
-              ),
             Expanded(
-              // It takes 5/6 part of the screen
               flex: 4,
               child: Padding(
                 padding: const EdgeInsets.all(defaultPadding),
                 child: Column(
                   children: [
+                    Header(fct: () {
+                      context.read<SideMenuController>().mainControlMenu();
+                    }),
                     const SizedBox(height: defaultPadding),
                     Expanded(
                       child: Container(

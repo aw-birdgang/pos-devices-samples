@@ -10,8 +10,8 @@ import '../../../shared/responsive.dart';
 
 class SideMenu extends StatelessWidget {
   const SideMenu({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -50,9 +50,9 @@ class SideMenu extends StatelessWidget {
 
 class DrawerListTile extends StatelessWidget {
   const DrawerListTile({
-    Key? key,
+    super.key,
     required this.listOfModel,
-  }) : super(key: key);
+  });
 
   final List<Menu> listOfModel;
 
@@ -72,17 +72,6 @@ class DrawerListTile extends StatelessWidget {
               if (Responsive.isMobile(context) ||
                   Responsive.isBigMobile(context) ||
                   Responsive.isTablet(context)) Navigator.pop(context);
-              // if (i != listOfModel.length) {
-              //   context.read<MenuController>().onChangeSelectedMenu(i);
-              //   if (Responsive.isMobile(context) ||
-              //       Responsive.isBigMobile(context) ||
-              //       Responsive.isTablet(context)) Navigator.pop(context);
-              // }
-              // else {
-              //   context.read<AuthController>().SignOut().then((value) {
-              //       context.read<MenuController>().buildMenu();
-              //     });
-              // }
             },
             horizontalTitleGap: 0.0,
             leading: SvgPicture.asset(

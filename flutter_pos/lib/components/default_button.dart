@@ -20,8 +20,8 @@ class DefaultButton extends StatelessWidget {
     this.height = 40,
     this.gradient,
     this.isUppercase  = false,
-    Key? key
-  }) : super(key: key);
+    super.key
+  });
 
   @override
   Widget build(BuildContext context) {
